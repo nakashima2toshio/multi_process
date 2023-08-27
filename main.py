@@ -1,4 +1,5 @@
-#
+# 呼び出すworkerの数が少なくそれぞれの処理が長い場合は[Process]を使う。
+# それぞれの処理が短い場合は[Pool]を使う。
 import os
 from faker import Faker
 import multiprocessing as mp
@@ -139,21 +140,21 @@ def woker5(start, end):
 if __name__ == '__main__':
     make_sample_csv()
 
-    # t0 = mp.Process(target=faker_sample)
+    # making processes
     t1 = mp.Process(target=woker1, args=(0, 3000,))
     t2 = mp.Process(target=woker2, args=(3001, 6000,))
     t3 = mp.Process(target=woker3, args=(6001, 9000,))
     t4 = mp.Process(target=woker3, args=(9001, 12000,))
     t5 = mp.Process(target=woker4, args=(0,12000))
 
-    # t0.start()
+    # process.start()
     t1.start()
     t2.start()
     t3.start()
     t4.start()
     print("Processes started. ----------------")
 
-    # t0.join()
+    # process.join()
     t1.join()
     t2.join()
     t3.join()
