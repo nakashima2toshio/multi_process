@@ -6,7 +6,7 @@ import multiprocessing as mp
 import time
 import logging
 import pandas as pd
-import random
+# import random
 
 logging.basicConfig(
     level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -122,10 +122,10 @@ def woker5(start, end):
     begine = time.time()
     msg = 'worker-5-start:' + str(start) + ' - end:' + str(end)
     logging.info(msg)
-    df4 = pd.read_csv('random_data.csv')
+    df5 = pd.read_csv('random_data.csv')
     for col in range(start, end - 1):
         for row in range(0, 1000 - 1):
-            a = df4.iloc[row, col]
+            a = df5.iloc[row, col]
             if len(str(a)) <= 5:
                 pass
             else:
